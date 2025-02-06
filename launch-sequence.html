@@ -131,8 +131,16 @@
     </footer>
 
     <!-- Audio Elements for Siren and Explosion Sounds -->
-    <audio id="siren-sound" src="sci-fi-warning-siren-jam-fx-1-00-28.mp3" loop></audio>
-    <audio id="explosion-sound" src="mixkit-bomb-drop-impact-2804.wav"></audio>
+    <audio id="siren-sound" controls preload="auto" style="display:none;">
+        <source src="sci-fi-warning-siren-jam-fx-1-00-28.mp3" type="audio/mpeg">
+        <source src="sci-fi-warning-siren-jam-fx-1-00-28.wav" type="audio/wav">
+        Your browser does not support the audio tag.
+    </audio>
+    <audio id="explosion-sound" controls preload="auto" style="display:none;">
+        <source src="mixkit-bomb-drop-impact-2804.wav" type="audio/wav">
+        <source src="mixkit-bomb-drop-impact-2804.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
 
     <script src="launch-sequence.js"></script>
 </body>
