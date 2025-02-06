@@ -1,0 +1,291 @@
+/* 🔥 Global Styles - Scammy Yet Functional */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    background: #ffe600; /* Classic scammy yellow */
+    color: #111;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    border: 3px solid gold;
+}
+
+/* Scammy Headings */
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ff0000;
+    text-shadow: 2px 2px yellow;
+}
+
+h2 {
+    color: #008000;
+    text-shadow: 1px 1px black;
+}
+
+/* 🔥 Blinking Scammy Text */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.blinking-text {
+    color: red;
+    font-weight: bold;
+    animation: blink 0.7s infinite;
+}
+
+/* ⚠️ Fake Urgency Text */
+.urgent-text {
+    color: red;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px black;
+}
+
+/* ✅ Buttons - Loud & In-Your-Face */
+button {
+    font-size: 1.2em;
+    padding: 12px 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+/* 🔥 Big Red Scammy Button */
+.blinking-button {
+    background-color: gold;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 15px;
+    border: 3px solid red;
+    cursor: pointer;
+    animation: blink 0.5s infinite;
+}
+
+.blinking-button:hover {
+    background-color: red;
+    color: yellow;
+}
+
+/* 🎁 Fake Gift Claim Button */
+#claim-reward {
+    font-size: 1.3em;
+    padding: 15px;
+    background: gold;
+    color: black;
+    border: 3px solid red;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#claim-reward:hover {
+    background: red;
+    color: gold;
+    border: 3px solid yellow;
+}
+
+/* 📅 Form Inputs */
+.input-section {
+    margin-bottom: 20px;
+}
+
+input[type="date"], input[type="text"], input[type="time"] {
+    font-size: 1.2em;
+    padding: 8px;
+    margin: 10px;
+    border: 2px solid gold;
+    background: #ffffcc;
+    text-align: center;
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 🕐 Countdown Display */
+#countdown-list {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #e91e63;
+}
+
+/* 🎉 Preset Event Buttons */
+.preset-event {
+    padding: 15px;
+    background-color: #ddd;
+    border-radius: 8px;
+    width: 45%;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.preset-event button {
+    padding: 8px 12px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.preset-event button:hover {
+    background-color: #e53935;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+}
+
+/* 🌙 SCAM MODE (Dark Mode) */
+.dark-mode {
+    background-color: black;
+    color: yellow;
+}
+
+.dark-mode .navbar {
+    background-color: darkred;
+}
+
+.dark-mode .container {
+    background-color: #222;
+    color: gold;
+    border: 3px solid yellow;
+    box-shadow: 0 0 15px gold;
+}
+
+/* 🔥 Scammy Navigation Bar */
+.navbar {
+    background-color: red;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navbar li {
+    display: inline;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: gold;
+    border-radius: 5px;
+    color: red;
+}
+
+/* 📢 Fake Reviews */
+.testimonials {
+    font-style: italic;
+    background-color: #fff4c2;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px dashed red;
+}
+
+/* 💡 Fun Facts Section */
+.fun-facts {
+    background-color: #ffcccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* 🏁 Footer */
+footer {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 🔥 VIP Page Special Styling */
+.vip-page {
+    background: gold;
+    color: black;
+}
+
+.vip-tiers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.tier {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    width: 30%;
+    min-width: 250px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.gold { border: 5px solid gold; }
+.diamond { border: 5px solid blue; }
+.elite { border: 5px solid red; }
+
+.fake-buy {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: red;
+    text-transform: uppercase;
+}
+
+.fake-buy:hover {
+    background: darkred;
+}
+
+/* Fake Processing Message */
+#processing {
+    font-size: 18px;
+    color: red;
+    font-weight: bold;
+    display: none;
+}

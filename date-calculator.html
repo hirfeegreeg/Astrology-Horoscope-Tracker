@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Difference Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        .input-section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .output-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">⏳ Countdown Timer</a></li>
+            <li><a href="date-calculator.html">📅 Date Calculator</a></li>
+            <li><a href="moon-phase.html">🌙 Moon Phase Tracker</a></li>
+            <li><a href="astrology.html">🔮 Astrology</li>
+            <li><a href="launch-sequence.html">AUTHORIZED PERSONNEL ONLY</a></li>
+            <li><a href="vip.html" class="vip-button">💎 *Instant Mega VIP Membership* (LIMITED OFFER!)</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h1>📅 Days Between Dates Calculator</h1>
+        
+        <div class="input-section">
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date">
+            
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date">
+            
+            <button id="calculate-button">Calculate</button>
+        </div>
+        
+        <div class="output-section">
+            <h2>📊 Results</h2>
+            <p id="total-days">Total Days: -</p>
+            <p id="working-days">Working Days (Mon-Fri): -</p>
+            <p id="weeks">Weeks: -</p>
+            <p id="months">Months: -</p>
+            <p id="years">Years: -</p>
+        </div>
+        
+        <h2>📖 How to Use</h2>
+        <p>Enter a start and end date, then click "Calculate" to see the difference in days, weeks, months, and years. The tool also calculates working days (Monday-Friday).</p>
+    </div>
+    
+    <script>
+        document.getElementById("calculate-button").addEventListener("click", function() {
+            let startDate = new Date(document.getElementById("start-date").value);
+            let endDate = new Date(document.getElementById("end-date").value);
+            
+            if (isNaN(startDate) || isNaN(endDate)) {
+                alert("Please select valid start and end dates.");
+                return;
+            }
+            
+            let timeDiff = endDate - startDate;
+            let totalDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) + 1;
+            let workingDays = 0;
+            let weeks = Math.floor(totalDays / 7);
+            let months = Math.floor(totalDays / 30.44);
+            let years = Math.floor(totalDays / 365);
+            
+            for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+                if (d.getDay() !== 0 && d.getDay() !== 6) {
+                    workingDays++;
+                }
+            }
+            
+            document.getElementById("total-days").textContent = `Total Days: ${totalDays}`;
+            document.getElementById("working-days").textContent = `Working Days (Mon-Fri): ${workingDays}`;
+            document.getElementById("weeks").textContent = `Weeks: ${weeks}`;
+            document.getElementById("months").textContent = `Months: ${months}`;
+            document.getElementById("years").textContent = `Years: ${years}`;
+        });
+    </script>
+</body>
+</html>

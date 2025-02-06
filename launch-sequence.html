@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Launch Sequence - Activate the countdown and prepare for the fake nuke launch!">
+    <title>🚀 Launch Sequence - Countdown to Doom</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 0;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            width: 80%;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: red;
+            text-transform: uppercase;
+        }
+
+        .input-section,
+        .button-section {
+            margin: 20px 0;
+        }
+
+        /* Key Rotation Section */
+        .key-section {
+            margin: 30px;
+        }
+
+        .key-button {
+            font-size: 24px;
+            padding: 15px;
+            background-color: gold;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 15px;
+            border: 2px solid red;
+        }
+
+        .key-button:disabled {
+            background-color: #666;
+        }
+
+        /* Rotation Indicators */
+        .key-display {
+            font-size: 36px;
+            color: yellow;
+            margin: 20px;
+        }
+
+        /* Red Button */
+        .red-button {
+            background-color: red;
+            color: white;
+            font-size: 24px;
+            padding: 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            width: 150px;
+            height: 150px;
+            margin-top: 30px;
+        }
+
+        .countdown {
+            font-size: 30px;
+            color: yellow;
+            margin-top: 20px;
+        }
+
+        .explosion {
+            display: none;
+            font-size: 40px;
+            color: red;
+            margin-top: 50px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: red;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Launch Sequence</h1>
+        <p>Enter the secret keys by rotating them to the correct position and activate the countdown!</p>
+
+        <!-- Key Rotation Section -->
+        <div class="key-section">
+            <p>Key 1: <span id="key1-display">🔑</span></p>
+            <button id="rotate-key1" class="key-button">Rotate Key 1</button>
+
+            <p>Key 2: <span id="key2-display">🔑</span></p>
+            <button id="rotate-key2" class="key-button">Rotate Key 2</button>
+        </div>
+
+        <!-- Red Button to Start Countdown -->
+        <button id="red-button" class="red-button" disabled>Launch!</button>
+
+        <!-- Countdown Timer -->
+        <div id="countdown" class="countdown"></div>
+
+        <!-- Explosion Message -->
+        <div id="explosion" class="explosion">💥 Nuke Launched! Goodbye! 💥</div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Totally Legit Launch Co. | 🚀 Countdown to Doom</p>
+    </footer>
+
+    <!-- Audio Elements for Siren and Explosion Sounds -->
+    <audio id="siren-sound" src="assets/sounds/sci-fi-warning-siren-jam-fx-1-00-28.mp3" loop></audio>
+    <audio id="explosion-sound" src="assets/sounds/mixkit-bomb-drop-impact-2804.wav"></audio>
+
+    <script src="launch-sequence.js"></script>
+</body>
+</html>

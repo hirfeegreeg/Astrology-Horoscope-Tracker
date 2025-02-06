@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Moon Phase Tracker - View live data about moon phases, visibility, next phase, moon age, and more.">
+    <title>🌙 Moon Phase Tracker - Unlock Secret Wealth! 💰</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic Reset and Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe600; /* Scammy yellow background */
+            color: #111;
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        /* Navigation bar styling */
+        .navbar {
+            background-color: red; /* Scammy red navbar */
+            color: white;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            display: inline-block;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .navbar ul li a:hover {
+            color: yellow; /* Hover effect for scammy vibe */
+        }
+
+        /* Title and Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            color: red;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Moon info card */
+        .moon-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+
+        .moon-info h2 {
+            font-size: 28px;
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .moon-info p {
+            font-size: 18px;
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+
+        .moon-info .moon-attribute {
+            font-weight: bold;
+            color: red;
+        }
+
+        /* VIP Membership Button and Fake Offer */
+        .vip-button {
+            background-color: gold;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            animation: blink 1s infinite; /* Blinking animation for scammy vibe */
+        }
+
+        .vip-button:hover {
+            background-color: red;
+            color: yellow;
+            box-shadow: 0 0 15px gold;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Fun Facts Section */
+        .moon-facts {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .moon-facts h2 {
+            font-size: 24px;
+            color: red;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .moon-facts ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .moon-facts li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        /* Loading & Error Message */
+        #loading {
+            text-align: center;
+            font-size: 20px;
+            color: #2980b9;
+            display: none;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: red;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Media Query for Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .moon-info, .moon-facts {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">⏳ Countdown Timer</a></li>
+            <li><a href="date-calculator.html">📅 Date Calculator</a></li>
+            <li><a href="moon-phase.html">🌙 Moon Phase Tracker</a></li>
+            <li><a href="astrology.html">🔮 Astrology</a></li>
+            <li><a href="launch-sequence.html">AUTHORIZED PERSONNEL ONLY</a></li>
+            <li><a href="vip.html" class="vip-button">💎 *Instant Mega VIP Membership* (LIMITED OFFER!)</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Title Section -->
+        <h1>🌙 Moon Phase Tracker</h1>
+
+        <!-- Loading message -->
+        <p id="loading">Loading...</p>
+        
+        <!-- Moon Information Section -->
+        <div class="moon-info">
+            <h2>Current Moon Phase</h2>
+            <p id="moon-phase">Loading...</p>
+            <p id="moon-visibility">Visibility: <span>--%</span></p>
+            <p id="next-phase">Next Phase: <span>--</span></p>
+            <p id="days-to-next">Days Until Next Phase: <span>--</span></p>
+            <p id="moon-age">Moon Age: <span>-- days</span></p>
+            <p id="moon-distance">Distance from Earth: <span>-- km</span></p>
+        </div>
+
+        <!-- Fun Moon Facts Section -->
+        <div class="moon-facts">
+            <h2>🌕 Fun Moon Facts</h2>
+            <ul>
+                <li>The moon is about 1/4th the size of Earth.</li>
+                <li>It takes 27.3 days for the moon to complete one orbit around Earth.</li>
+                <li>The moon’s gravity is about 1/6th of Earth’s gravity.</li>
+                <li>The Moon is moving away from Earth at a rate of about 1.5 inches (3.8 cm) per year.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Moon Tracker. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for fetching and displaying moon data -->
+    <script src="script2.js"></script>
+</body>
+</html>

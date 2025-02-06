@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Astrology Predictions - Daily horoscopes, zodiac sign readings, compatibility checker, and more.">
+    <title>🔮 Astrology & Horoscope Readings - Unlock Secret Wealth! 💰</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic Reset and Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe600; /* Scammy yellow background */
+            color: #111;
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        /* Navigation bar styling */
+        .navbar {
+            background-color: red;
+            color: white;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            display: inline-block;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .navbar ul li a:hover {
+            color: yellow;
+        }
+
+        /* Title and Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            color: red;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Horoscope Section */
+        .horoscope-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .horoscope-section h2 {
+            font-size: 28px;
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .horoscope-section p {
+            font-size: 20px;
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+
+        .horoscope-section .horoscope-attribute {
+            font-weight: bold;
+            color: red;
+        }
+
+        /* Astrological Compatibility Section */
+        .compatibility-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .compatibility-section h2 {
+            font-size: 24px;
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .compatibility-section input[type="text"] {
+            font-size: 18px;
+            padding: 8px;
+            margin: 10px;
+            border: 2px solid gold;
+            background: #fff;
+            display: inline-block;
+        }
+
+        .compatibility-section button {
+            background-color: gold;
+            color: black;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .compatibility-section button:hover {
+            background-color: red;
+            color: yellow;
+            box-shadow: 0 0 15px gold;
+        }
+
+        /* Fun Moon Facts Section */
+        .fun-facts {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .fun-facts h2 {
+            font-size: 24px;
+            color: red;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .fun-facts ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .fun-facts li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: red;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Media Query for Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .horoscope-section, .compatibility-section, .fun-facts {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">⏳ Countdown Timer</a></li>
+            <li><a href="date-calculator.html">📅 Date Calculator</a></li>
+            <li><a href="moon-phase.html">🌙 Moon Phase Tracker</a></li>
+            <li><a href="astrology.html">🔮 Astrology</a></li>
+            <li><a href="launch-sequence.html">AUTHORIZED PERSONNEL ONLY</a></li>
+            <li><a href="vip.html" class="vip-button">💎 *Instant Mega VIP Membership* (LIMITED OFFER!)</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Title Section -->
+        <h1>🔮 Astrology & Horoscope Readings</h1>
+
+        <!-- Horoscope Section -->
+        <div class="horoscope-section">
+            <h2>Your Horoscope for Today</h2>
+            <p id="daily-horoscope">Loading...</p>
+            <p>💥 *Lucky Number*: <span id="lucky-number">7</span></p>
+            <p>💥 *Lucky Color*: <span id="lucky-color">Red</span></p>
+        </div>
+
+        <!-- Compatibility Section -->
+        <div class="compatibility-section">
+            <h2>Astrological Compatibility</h2>
+            <p>Find out how well you match with others! Enter two names below:</p>
+            <input type="text" id="name-one" placeholder="Your Name">
+            <input type="text" id="name-two" placeholder="Partner's Name">
+            <button id="check-compatibility">Check Compatibility</button>
+            <p id="compatibility-result">Enter names to see compatibility.</p>
+        </div>
+
+        <!-- Fun Astrology Facts Section -->
+        <div class="fun-facts">
+            <h2>🌟 Fun Astrology Facts</h2>
+            <ul>
+                <li>Your zodiac sign might influence your job success!</li>
+                <li>People born under Pisces are more likely to become millionaires!</li>
+                <li>The moon controls your moods! 🌙</li>
+                <li>Want to win big? Follow your lucky number every day!</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Astrology Tracker. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for fetching and displaying horoscope data -->
+    <script src="astrology.js"></script>
+</body>
+</html>
