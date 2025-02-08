@@ -1,89 +1,137 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Initial setup: hide the countdown and explosion
     const countdownElement = document.getElementById("countdown");
     const explosionElement = document.getElementById("explosion");
     const redButton = document.getElementById("red-button");
 
-    // Key displays
-    const key1Display = document.getElementById("key1-display");
-    const key2Display = document.getElementById("key2-display");
+    const diagnostic = document.getElementById("run-diagnostic");
+    const key1 = document.getElementById("rotate-key1");
+    const key2 = document.getElementById("rotate-key2");
+    const switch1 = document.getElementById("switch1");
+    const switch2 = document.getElementById("switch2");
+    const launchCodeInput = document.getElementById("launch-code");
+    const submitCode = document.getElementById("submit-code");
+    const fingerprint = document.getElementById("fingerprint");
+    const retinaScan = document.getElementById("retina-scan");
+    const finalConfirmation = document.getElementById("final-confirmation");
+    const warningMessage = document.getElementById("warning");
 
-    // Button elements for rotating keys
-    const rotateKey1 = document.getElementById("rotate-key1");
-    const rotateKey2 = document.getElementById("rotate-key2");
+    // Load AI voice confirmation sounds
+    const systemCheckSound = new Audio("System diagnostic ch (1).mp3");
+    const keyTurnSound = new Audio("Key rotation verifie (1).mp3");
+    const launchArmedSound = new Audio("Launch system armed .mp3");
+    const securityClearanceSound = new Audio("Security clearance a.mp3");
+    const biometricScanCompleteSound = new Audio("Biometric scan compl.mp3");
+    const retinaScanVerifiedSound = new Audio("Retina scan verified.mp3");
+    const launchSequenceActivatedSound = new Audio("Launch sequence acti.mp3");
+    const tMinus10SecondsSound = new Audio("T minus 10 seconds t.mp3");
+    const launchSuccessfulSound = new Audio("Launch successful Ta.mp3");
 
-    // Get audio elements for siren and explosion
-    const sirenSound = document.getElementById("siren-sound");
-    const explosionSound = document.getElementById("explosion-sound");
+    // Beep and error sounds
+    const beep = new Audio("beep.mp3");
+    const errorSound = new Audio("error.mp3");
 
-    // Initial states of the keys
-    let key1State = 0; // 0 is initial state
-    let key2State = 0; // 0 is initial state
+    const sirenSound = new Audio("siren.mp3");
+    const explosionSound = new Audio("explosion.wav");
 
-    // Rotate key 1
-    rotateKey1.addEventListener("click", function() {
-        key1State = (key1State + 1) % 3; // Rotate between 0, 1, 2 states
-        updateKeyDisplay();
-        checkKeys();
+    let step = 0;
+
+    diagnostic.addEventListener("click", function() {
+        systemCheckSound.play();
+        alert("✅ System diagnostic check complete. All systems are operational.");
+        key1.disabled = false;
+        key2.disabled = false;
+        diagnostic.disabled = true;
     });
 
-    // Rotate key 2
-    rotateKey2.addEventListener("click", function() {
-        key2State = (key2State + 1) % 3; // Rotate between 0, 1, 2 states
-        updateKeyDisplay();
-        checkKeys();
-    });
+    key1.addEventListener("click", () => turnKey(key1));
+    key2.addEventListener("click", () => turnKey(key2));
 
-    // Update key displays based on the current state
-    function updateKeyDisplay() {
-        key1Display.textContent = key1State === 0 ? "🔑" : key1State === 1 ? "🔒" : "🔓";
-        key2Display.textContent = key2State === 0 ? "🔑" : key2State === 1 ? "🔒" : "🔓";
-    }
-
-    // Check if both keys are in the correct state to enable the red button
-    function checkKeys() {
-        if (key1State === 2 && key2State === 2) { // Both keys must be in the "correct" position (state 2)
-            redButton.disabled = false;
-            alert("🔴 Both keys are in the correct position! Press the red button to start the countdown.");
+    function turnKey(key) {
+        key.disabled = true;
+        step++;
+        if (step === 2) {
+            keyTurnSound.play();
+            switch1.disabled = false;
+            switch2.disabled = false;
+            beep.play();
+            alert("✅ Key rotation verified. Proceed to switch activation.");
         }
     }
 
-    // Start the countdown when red button is pressed
+    switch1.addEventListener("click", () => flipSwitch(switch1));
+    switch2.addEventListener("click", () => flipSwitch(switch2));
+
+    function flipSwitch(switchBtn) {
+        switchBtn.disabled = true;
+        step++;
+        if (step === 4) {
+            launchArmedSound.play();
+            launchCodeInput.disabled = false;
+            submitCode.disabled = false;
+            beep.play();
+            alert("⚠️ Launch system armed. Security code required.");
+        }
+    }
+
+    submitCode.addEventListener("click", function() {
+        let code = launchCodeInput.value;
+        if (code === "0000") {
+            securityClearanceSound.play();
+            fingerprint.disabled = false;
+            alert("✅ Code Accepted! Scan fingerprint.");
+        } else {
+            errorSound.play();
+            alert("❌ Incorrect Code! Try Again.");
+        }
+    });
+
+    fingerprint.addEventListener("click", function() {
+        biometricScanCompleteSound.play();
+        retinaScan.disabled = false;
+        alert("✅ Biometric Scan Complete! Perform retina scan.");
+    });
+
+    retinaScan.addEventListener("click", function() {
+        retinaScanVerifiedSound.play();
+        finalConfirmation.disabled = false;
+        alert("✅ Retina Scan Verified! Confirm final launch.");
+    });
+
+    finalConfirmation.addEventListener("click", function() {
+        launchSequenceActivatedSound.play();
+        redButton.disabled = false;
+        warningMessage.style.display = "block";
+        alert("🚀 Final Confirmation Complete! Press RED BUTTON to launch.");
+    });
+
     redButton.addEventListener("click", function() {
-        redButton.disabled = true;
+        tMinus10SecondsSound.play();
+        alert("🔥 LAUNCH INITIATED...");
         startCountdown();
     });
 
-    // Start a countdown of 1 hour (3600 seconds)
     function startCountdown() {
-        // Play the siren sound when countdown starts
         sirenSound.play();
-        let timeRemaining = 3600; // seconds
-        const interval = setInterval(function() {
+        let timeRemaining = 10;
+
+        const interval = setInterval(() => {
             if (timeRemaining <= 0) {
                 clearInterval(interval);
                 triggerExplosion();
             } else {
-                const hours = Math.floor(timeRemaining / 3600);
-                const minutes = Math.floor((timeRemaining % 3600) / 60);
-                const seconds = timeRemaining % 60;
-                countdownElement.textContent = `${hours}h ${minutes}m ${seconds}s`;
+                countdownElement.textContent = `${timeRemaining}s`;
                 timeRemaining--;
             }
         }, 1000);
     }
 
-    // Trigger the "nuke" explosion after countdown
     function triggerExplosion() {
-        // Stop the siren and play the explosion sound
         sirenSound.pause();
-        sirenSound.currentTime = 0; // Reset to the beginning
         explosionSound.play();
-
         countdownElement.textContent = "";
-        explosionElement.style.display = "block"; // Show explosion message
-        setTimeout(function() {
-            alert("💥 Nuke Launched! 💥 Goodbye!");
-        }, 1000);
+        explosionElement.style.display = "block";
+        launchSuccessfulSound.play();
+        alert("💥 Nuke Launched! 💥 Goodbye!");
     }
 });
+
