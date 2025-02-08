@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Launch Sequence - Activate the countdown and prepare for the fake nuke launch!">
-    <title>🚀 Launch Sequence - Countdown to Doom</title>
+    <title>🚀 Nuclear Launch Control</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -12,7 +11,6 @@
             background-color: black;
             color: white;
             text-align: center;
-            padding: 0;
         }
 
         .container {
@@ -30,40 +28,26 @@
             text-transform: uppercase;
         }
 
-        .input-section,
-        .button-section {
+        .section {
             margin: 20px 0;
         }
 
-        /* Key Rotation Section */
-        .key-section {
-            margin: 30px;
-        }
-
-        .key-button {
-            font-size: 24px;
-            padding: 15px;
+        .task-button {
+            font-size: 18px;
+            padding: 10px;
             background-color: gold;
             color: black;
             font-weight: bold;
             cursor: pointer;
-            border-radius: 10px;
-            margin: 15px;
+            border-radius: 5px;
+            margin: 10px;
             border: 2px solid red;
         }
 
-        .key-button:disabled {
+        .task-button:disabled {
             background-color: #666;
         }
 
-        /* Rotation Indicators */
-        .key-display {
-            font-size: 36px;
-            color: yellow;
-            margin: 20px;
-        }
-
-        /* Red Button */
         .red-button {
             background-color: red;
             color: white;
@@ -91,56 +75,85 @@
             text-transform: uppercase;
         }
 
-        footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background-color: red;
-            color: white;
+        .warning {
+            display: none;
+            font-size: 25px;
+            color: yellow;
+            background: red;
             padding: 10px;
-            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Launch Sequence</h1>
-        <p>Enter the secret keys by rotating them to the correct position and activate the countdown!</p>
+        <h1>🚀 Nuclear Launch Control</h1>
+        <p>Complete the following security protocols:</p>
 
-        <!-- Key Rotation Section -->
-        <div class="key-section">
-            <p>Key 1: <span id="key1-display">🔑</span></p>
-            <button id="rotate-key1" class="key-button">Rotate Key 1</button>
-
-            <p>Key 2: <span id="key2-display">🔑</span></p>
-            <button id="rotate-key2" class="key-button">Rotate Key 2</button>
+        <div class="section">
+            <p>🔧 System Diagnostic Check</p>
+            <button id="run-diagnostic" class="task-button">Run System Check</button>
         </div>
 
-        <!-- Red Button to Start Countdown -->
-        <button id="red-button" class="red-button" disabled>Launch!</button>
+        <div class="section">
+            <p>🔑 Insert & Turn Keys</p>
+            <button id="rotate-key1" class="task-button" disabled>Turn Key 1</button>
+            <button id="rotate-key2" class="task-button" disabled>Turn Key 2</button>
+        </div>
 
-        <!-- Countdown Timer -->
+        <div class="section">
+            <p>⚠️ Arm Launch System</p>
+            <button id="switch1" class="task-button" disabled>Flip Switch 1</button>
+            <button id="switch2" class="task-button" disabled>Flip Switch 2</button>
+        </div>
+
+        <div class="section">
+            <p>🔢 Enter Security Code</p>
+            <input type="password" id="launch-code" placeholder="Enter Code" disabled>
+            <button id="submit-code" class="task-button" disabled>Submit</button>
+        </div>
+
+        <div class="section">
+            <p>🛡️ Biometric Authorization</p>
+            <button id="fingerprint" class="task-button" disabled>Scan Fingerprint</button>
+        </div>
+
+        <div class="section">
+            <p>👁️ Retina Scan Verification</p>
+            <button id="retina-scan" class="task-button" disabled>Scan Retina</button>
+        </div>
+
+        <div class="section">
+            <p>🛑 Final Launch Confirmation</p>
+            <button id="final-confirmation" class="task-button" disabled>Confirm</button>
+        </div>
+
+        <p id="warning" class="warning">⚠️ WARNING: IRREVERSIBLE ACTION ⚠️</p>
+
+        <button id="red-button" class="red-button" disabled>🚀 LAUNCH</button>
+
         <div id="countdown" class="countdown"></div>
 
-        <!-- Explosion Message -->
         <div id="explosion" class="explosion">💥 Nuke Launched! Goodbye! 💥</div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Totally Legit Launch Co. | 🚀 Countdown to Doom</p>
-    </footer>
+    <!-- Include all sound files -->
+    <audio id="siren-sound" src="siren.mp3"></audio>
+    <audio id="explosion-sound" src="explosion.wav"></audio>
+    <audio id="beep-sound" src="beep.mp3"></audio>
+    <audio id="error-sound" src="error.mp3"></audio>
 
-    <!-- Audio Elements for Siren and Explosion Sounds -->
-    <audio id="siren-sound" controls preload="auto" style="display:none;">
-        <source src="sci-fi-warning-siren-jam-fx-1-00-28.mp3" type="audio/mpeg">
-        <source src="sci-fi-warning-siren-jam-fx-1-00-28.wav" type="audio/wav">
-        Your browser does not support the audio tag.
-    </audio>
-    <audio id="explosion-sound" controls preload="auto" style="display:none;">
-        <source src="mixkit-bomb-drop-impact-2804.wav" type="audio/wav">
-        <source src="mixkit-bomb-drop-impact-2804.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-    </audio>
+    <!-- AI Voice Confirmation Sounds -->
+    <audio id="system-check-sound" src="System diagnostic ch (1).mp3"></audio>
+    <audio id="key-turn-sound" src="Key rotation verifie (1).mp3"></audio>
+    <audio id="launch-armed-sound" src="Launch system armed .mp3"></audio>
+    <audio id="security-clearance-sound" src="Security clearance a.mp3"></audio>
+    <audio id="biometric-scan-sound" src="Biometric scan compl.mp3"></audio>
+    <audio id="retina-scan-sound" src="Retina scan verified.mp3"></audio>
+    <audio id="launch-sequence-sound" src="Launch sequence acti.mp3"></audio>
+    <audio id="t-minus-sound" src="T minus 10 seconds t.mp3"></audio>
+    <audio id="launch-successful-sound" src="Launch successful Ta.mp3"></audio>
 
     <script src="launch-sequence.js"></script>
 </body>
